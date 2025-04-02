@@ -188,7 +188,6 @@ dates as (
       on cast(a.va_closer_id as numeric) = m.channel_id
     where 1=1
     and evar61 is not null
-    and evar7 in ('car','home','landlord','pet','travel')
     and pagename in ('ev-ins:car:quote:thanks','ev-ins:home:quote:thanks','ev-ins:quoteline:travel:thankyou')
   )
   where hit_num = 1 --only take the first hit for purchase
