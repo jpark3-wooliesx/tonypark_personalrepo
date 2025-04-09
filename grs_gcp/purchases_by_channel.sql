@@ -11,7 +11,7 @@ dates as (
   from (
     select
     lower(eVar7) as product
-    ,evar61 as policy_id
+    ,post_evar61 as policy_id
     ,mcvisid as adobe_id
     ,date_time
     ,visit_num
@@ -55,7 +55,7 @@ dates as (
   from (
     select
     lower(eVar7) as product
-    ,evar61 as policy_id
+    ,post_evar61 as policy_id
     ,mcvisid as adobe_id
     ,date_time
     ,visit_num
@@ -171,7 +171,7 @@ dates as (
   from (
     select
     lower(eVar7) as product
-    ,evar61 as pid
+    ,post_evar61 as pid
     ,mcvisid as adobe_id
     ,date_time
     ,visit_num
@@ -187,7 +187,7 @@ dates as (
     left join gcp-wow-food-wlx-digaspt-dev.prod_adobe_data.dim_grs_marketing_channel m
       on cast(a.va_closer_id as numeric) = m.channel_id
     where 1=1
-    and evar61 is not null
+    and post_evar61 is not null
     and pagename in ('ev-ins:car:quote:thanks','ev-ins:home:quote:thanks','ev-ins:quoteline:travel:thankyou')
   )
   where hit_num = 1 --only take the first hit for purchase

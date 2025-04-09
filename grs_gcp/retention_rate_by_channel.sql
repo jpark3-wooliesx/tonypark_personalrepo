@@ -74,7 +74,7 @@ date_range as (
   from (
     select
     lower(eVar7) as product
-    ,evar61 as pid
+    ,post_evar61 as pid
     ,mcvisid as adobe_id
     ,date_time
     ,visit_num
@@ -91,7 +91,7 @@ date_range as (
       on cast(a.va_closer_id as numeric) = m.channel_id
     where 1=1
     and date(a.date_time) between (select report_start from date_range) and (select report_end from date_range)
-    and evar61 is not null
+    and post_evar61 is not null
     and pagename in ('ev-ins:car:quote:thanks','ev-ins:home:quote:thanks')
   )
   where hit_num = 1 --only take the first hit for purchase
@@ -258,7 +258,7 @@ date_range as (
   from (
     select
     lower(eVar7) as product
-    ,evar61 as pid
+    ,post_evar61 as pid
     ,mcvisid as adobe_id
     ,date_time
     ,visit_num
@@ -275,7 +275,7 @@ date_range as (
       on cast(a.va_closer_id as numeric) = m.channel_id
     where 1=1
     and date(a.date_time) between (select report_start from date_range) and (select report_end from date_range)
-    and evar61 is not null
+    and post_evar61 is not null
     and pagename in ('ev-ins:car:quote:thanks','ev-ins:home:quote:thanks')
   )
   where hit_num = 1 --only take the first hit for purchase
