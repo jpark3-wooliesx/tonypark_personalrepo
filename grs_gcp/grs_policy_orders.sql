@@ -4,12 +4,12 @@ declare start_date_var date default current_date('Australia/Sydney')-8;
 declare end_date_var date default current_date('Australia/Sydney')-1;
 
 --remove previous 7 days data (which will be then be replaced)
-delete from gcp-wow-rwds-ai-insurance-dev.tony.grs_policy_orders
+delete from gcp-wow-rwds-ai-insurance-dev.analytics_layer.grs_policy_orders
   where date(date_time) between start_date_var and end_date_var
 ;
 
 --insert new data for the previous 7 days
-insert into gcp-wow-rwds-ai-insurance-dev.tony.grs_policy_orders
+insert into gcp-wow-rwds-ai-insurance-dev.analytics_layer.grs_policy_orders
 select
 * except(rnum)
 from (
@@ -116,7 +116,7 @@ declare end_date_var date default '2025-04-08';
 -- Pet: 2023-03-23
 -- Travel: 2024-01-18
 
-create or replace table gcp-wow-rwds-ai-insurance-dev.tony.grs_policy_orders as
+create or replace table gcp-wow-rwds-ai-insurance-dev.analytics_layer.grs_policy_orders as
 
 select
 * except(rnum)
