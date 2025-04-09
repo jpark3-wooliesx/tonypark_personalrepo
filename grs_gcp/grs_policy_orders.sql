@@ -1,3 +1,5 @@
+--the below script is run daily to populate the grs_policy_orders table with the previous 7 days of data
+
 declare start_date_var date default current_date('Australia/Sydney')-8;
 declare end_date_var date default current_date('Australia/Sydney')-1;
 
@@ -6,6 +8,7 @@ delete from gcp-wow-rwds-ai-insurance-dev.tony.grs_policy_orders
   where date(date_time) between start_date_var and end_date_var
 ;
 
+--insert new data for the previous 7 days
 insert into gcp-wow-rwds-ai-insurance-dev.tony.grs_policy_orders
 select
 * except(rnum)
@@ -102,6 +105,8 @@ order by date_time
 ;
 
 /*
+
+--The below script was run as a once-off to populate historical policy purchases from the GRS table
 
 declare start_date_var date default '2024-01-01';
 declare end_date_var date default '2025-04-08';
